@@ -44,6 +44,7 @@ public class Main {
                 Writer.nullWriter(),
                 compiler.getStandardFileManager(
                         diagnostic -> {
+                            System.out.println(diagnostic.toString());
                         },
                         Locale.getDefault(),
                         Charset.defaultCharset()
@@ -69,6 +70,9 @@ public class Main {
         passes.forEach(it -> it.translate(root));
 
         task.analyze();
+
+        System.out.println("DONE!");
+        System.out.println(root);
     }
 
     static class TestFileObject extends SimpleJavaFileObject {
